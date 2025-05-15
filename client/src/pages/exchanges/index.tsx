@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Header } from "@/components/layout/header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
@@ -20,10 +20,10 @@ import {
   SiBinance, 
   SiCoinbase, 
   SiKucoin, 
-  SiKraken,
-  SiBitfinex,
-  SiHuobi,
-  SiBybit
+  SiBitcoin,
+  SiBitcoincash,
+  SiBitwarden,
+  SiBit
 } from "react-icons/si";
 
 type ExchangeType = {
@@ -113,8 +113,8 @@ export default function Exchanges() {
     },
     {
       id: "exchange4",
-      name: "Kraken",
-      icon: <SiKraken className="text-purple-400" size={20} />,
+      name: "Bitcoin Market",
+      icon: <SiBitcoin className="text-purple-400" size={20} />,
       status: "syncing",
       balance: 7654.32,
       volume: 987.65,
@@ -128,10 +128,10 @@ export default function Exchanges() {
     { value: "binance", label: "Binance", icon: <SiBinance /> },
     { value: "coinbase", label: "Coinbase", icon: <SiCoinbase /> },
     { value: "kucoin", label: "KuCoin", icon: <SiKucoin /> },
-    { value: "kraken", label: "Kraken", icon: <SiKraken /> },
-    { value: "bitfinex", label: "Bitfinex", icon: <SiBitfinex /> },
-    { value: "huobi", label: "Huobi", icon: <SiHuobi /> },
-    { value: "bybit", label: "Bybit", icon: <SiBybit /> }
+    { value: "bitcoin", label: "Bitcoin Market", icon: <SiBitcoin /> },
+    { value: "bitcoincash", label: "Bitcoin Cash Market", icon: <SiBitcoincash /> },
+    { value: "bitwarden", label: "Bit Exchange", icon: <SiBitwarden /> },
+    { value: "bitex", label: "BitEx", icon: <SiBit /> }
   ];
   
   const isLimitReached = exchanges.length >= exchangeLimit && exchangeLimit !== Infinity;
@@ -172,7 +172,7 @@ export default function Exchanges() {
     // In a real app, we'd make an API call to refresh the exchange data
   };
   
-  const getStatusInfo = (status: string) => {
+  const getStatusInfo = (status: string): { color: string; text: string; textColor: string } => {
     switch (status) {
       case "connected":
         return {
@@ -191,6 +191,12 @@ export default function Exchanges() {
           color: "bg-red-500",
           text: "Error",
           textColor: "text-red-500",
+        };
+      default:
+        return {
+          color: "bg-gray-500",
+          text: "Unknown",
+          textColor: "text-gray-500",
         };
     }
   };

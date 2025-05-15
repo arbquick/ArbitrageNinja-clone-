@@ -15,7 +15,7 @@ import Settings from "@/pages/settings";
 import Subscription from "@/pages/subscription";
 import { SubscriptionProvider } from "@/context/subscription-context";
 import { AuthProvider } from "@/context/auth-context";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 function Router() {
   return (

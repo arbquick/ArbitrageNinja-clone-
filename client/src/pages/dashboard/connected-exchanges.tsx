@@ -8,7 +8,7 @@ import {
   SiBinance, 
   SiCoinbase, 
   SiKucoin, 
-  SiKraken
+  SiBitcoin
 } from "react-icons/si";
 
 export function ConnectedExchanges() {
@@ -42,8 +42,8 @@ export function ConnectedExchanges() {
     },
     {
       id: "exchange4",
-      name: "Kraken",
-      icon: <SiKraken className="text-white" />,
+      name: "Bitcoin Market",
+      icon: <SiBitcoin className="text-white" />,
       status: "syncing",
       balance: 7654.32,
       volume: 987.65

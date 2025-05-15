@@ -80,24 +80,25 @@ export const BOT_STRATEGIES = [
 ];
 
 export const TIMEFRAMES = {
+  HOUR: "hour",
   DAY: "day",
   WEEK: "week",
   MONTH: "month",
 };
 
 export const CRYPTOCURRENCIES = [
-  "BTC",
-  "ETH",
-  "XRP",
-  "ADA",
-  "SOL",
-  "DOT",
-  "MATIC",
-  "AVAX",
-  "LTC",
-  "DOGE",
-  "LINK",
-  "UNI",
+  { id: "btc", symbol: "BTC", name: "Bitcoin" },
+  { id: "eth", symbol: "ETH", name: "Ethereum" },
+  { id: "xrp", symbol: "XRP", name: "Ripple" },
+  { id: "ada", symbol: "ADA", name: "Cardano" },
+  { id: "sol", symbol: "SOL", name: "Solana" },
+  { id: "dot", symbol: "DOT", name: "Polkadot" },
+  { id: "matic", symbol: "MATIC", name: "Polygon" },
+  { id: "avax", symbol: "AVAX", name: "Avalanche" },
+  { id: "ltc", symbol: "LTC", name: "Litecoin" },
+  { id: "doge", symbol: "DOGE", name: "Dogecoin" },
+  { id: "link", symbol: "LINK", name: "Chainlink" },
+  { id: "uni", symbol: "UNI", name: "Uniswap" },
 ];
 
 export const API_ENDPOINTS = {

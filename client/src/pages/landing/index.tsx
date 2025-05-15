@@ -4,7 +4,7 @@ import { Hero } from "./hero";
 import { Features } from "./features";
 import { Pricing } from "./pricing";
 import { Footer } from "./footer";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 export default function LandingPage() {
   return (

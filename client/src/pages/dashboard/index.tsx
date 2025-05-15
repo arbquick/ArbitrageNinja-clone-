@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Header } from "@/components/layout/header";
 import { Stats } from "./stats";
@@ -7,6 +7,7 @@ import { ProfitChart } from "./profit-chart";
 import { ActiveBots } from "./active-bots";
 import { ArbitrageOpportunities } from "./arbitrage-opportunities";
 import { ConnectedExchanges } from "./connected-exchanges";
+import { NewsTicker } from "@/components/ui/news-ticker";
 import { useSubscription } from "@/context/subscription-context";
 
 export default function Dashboard() {
@@ -52,6 +53,8 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
+          
+          <NewsTicker className="mb-6" />
           
           <Stats timeframe={timeframe} />
           
