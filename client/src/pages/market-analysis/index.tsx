@@ -509,7 +509,7 @@ export default function MarketAnalysis() {
                           </SelectTrigger>
                           <SelectContent>
                             {CRYPTOCURRENCIES.map((crypto) => (
-                              <SelectItem key={crypto} value={crypto.toLowerCase()}>{crypto}</SelectItem>
+                              <SelectItem key={crypto.id} value={crypto.id}>{crypto.name} ({crypto.symbol})</SelectItem>
                             ))}
                           </SelectContent>
                         </Select>
