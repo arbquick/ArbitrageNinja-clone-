@@ -5,7 +5,12 @@ import { Zap, ChevronRight, ChevronLeft } from "lucide-react";
 import { SidebarMenuItem } from "./sidebar-menu-item";
 import { useSubscription } from "@/context/subscription-context";
 import { Button } from "@/components/ui/button";
-import { SUBSCRIPTION_TIERS } from "@shared/schema";
+// Define subscription tiers locally since we're having import issues
+const SUBSCRIPTION_TIERS = {
+  FREE: 'free',
+  BASIC: 'basic',
+  PRO: 'pro',
+} as const;
 import { motion, AnimatePresence } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 
