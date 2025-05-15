@@ -9,6 +9,8 @@ import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
+import { RealTimeChart } from "@/components/ui/real-time-chart";
+import { BotStrategySimulator } from "@/components/ui/bot-strategy-simulator";
 import { useSubscription } from "@/context/subscription-context";
 import { SUBSCRIPTION_TIERS, ARBITRAGE_TYPES } from "@shared/schema";
 import { Bot, Play, Pause, Plus, Trash2, Settings, AlertTriangle, Clock, Activity, ArrowUpCircle, DollarSign, LineChart } from "lucide-react";
