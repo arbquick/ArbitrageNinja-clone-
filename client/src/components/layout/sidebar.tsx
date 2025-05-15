@@ -19,10 +19,12 @@ export function Sidebar({ className }: SidebarProps) {
   return (
     <aside 
       className={cn(
-        "bg-surface-dark border-r border-gray-800 nav-menu-transition flex flex-col h-full",
-        collapsed ? "w-[70px] min-w-[70px]" : "w-[240px] min-w-[240px]",
+        "bg-surface-dark border-r border-gray-800 transition-all duration-300 flex flex-col h-full",
+        collapsed ? "w-[70px] min-w-[70px] hover:w-[240px] group" : "w-[240px] min-w-[240px]",
         className
       )}
+      onMouseEnter={() => collapsed && setCollapsed(false)}
+      onMouseLeave={() => !collapsed && setCollapsed(true)}
     >
       <div className="p-4 border-b border-gray-800">
         <div className="flex items-center gap-2">
