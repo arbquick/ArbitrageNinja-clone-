@@ -238,7 +238,19 @@ export default function BotPage() {
               </TabsContent>
               
               <TabsContent value="create">
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+                <Card className="bg-surface-light border-gray-800 mb-6">
+                  <CardHeader>
+                    <CardTitle>Bot Strategy Simulator</CardTitle>
+                    <CardDescription>Configure and test your trading bot strategy before deployment</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <BotStrategySimulator 
+                      onConfigChange={(config) => console.log("Bot config updated:", config)}
+                    />
+                  </CardContent>
+                </Card>
+                
+                <div className="hidden grid-cols-1 lg:grid-cols-5 gap-6">
                   <div className="lg:col-span-2">
                     <Card className="bg-surface-light border-gray-800 mb-6">
                       <CardHeader>
@@ -449,27 +461,63 @@ export default function BotPage() {
                 </div>
                 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-                  <Card className="bg-surface-light border-gray-800">
-                    <CardHeader>
-                      <CardTitle>Daily Profit</CardTitle>
-                    </CardHeader>
-                    <CardContent className="h-80 flex justify-center items-center">
-                      <div className="text-gray-400">
-                        [Chart visualization would be here in the real application]
-                      </div>
-                    </CardContent>
-                  </Card>
+                  <RealTimeChart
+                    data={[
+                      { timestamp: "May 1", price: 42.5, volume: 12000 },
+                      { timestamp: "May 2", price: 56.3, volume: 15000 },
+                      { timestamp: "May 3", price: 48.7, volume: 13500 },
+                      { timestamp: "May 4", price: 61.2, volume: 16200 },
+                      { timestamp: "May 5", price: 58.9, volume: 14800 },
+                      { timestamp: "May 6", price: 64.5, volume: 17400 },
+                      { timestamp: "May 7", price: 59.8, volume: 15300 },
+                      { timestamp: "May 8", price: 67.2, volume: 18100 },
+                      { timestamp: "May 9", price: 72.6, volume: 19500 },
+                      { timestamp: "May 10", price: 68.4, volume: 17900 },
+                      { timestamp: "May 11", price: 74.1, volume: 20200 },
+                      { timestamp: "May 12", price: 79.5, volume: 21800 },
+                      { timestamp: "May 13", price: 76.3, volume: 20500 },
+                      { timestamp: "May 14", price: 82.7, volume: 22600 },
+                    ]}
+                    title="Daily Profit"
+                    symbol="Profit"
+                    currentPrice={82.7}
+                    priceChange={8.5}
+                    timeframe="1d"
+                    chartType="area"
+                    showVolume={true}
+                    height={300}
+                    className="bg-surface-light border-gray-800"
+                    onTimeframeChange={(tf) => console.log("Timeframe changed to", tf)}
+                  />
                   
-                  <Card className="bg-surface-light border-gray-800">
-                    <CardHeader>
-                      <CardTitle>Trade Success Rate</CardTitle>
-                    </CardHeader>
-                    <CardContent className="h-80 flex justify-center items-center">
-                      <div className="text-gray-400">
-                        [Chart visualization would be here in the real application]
-                      </div>
-                    </CardContent>
-                  </Card>
+                  <RealTimeChart
+                    data={[
+                      { timestamp: "May 1", price: 91.2, volume: 6 },
+                      { timestamp: "May 2", price: 92.8, volume: 8 },
+                      { timestamp: "May 3", price: 90.5, volume: 5 },
+                      { timestamp: "May 4", price: 93.4, volume: 9 },
+                      { timestamp: "May 5", price: 94.7, volume: 12 },
+                      { timestamp: "May 6", price: 92.1, volume: 7 },
+                      { timestamp: "May 7", price: 91.8, volume: 6 },
+                      { timestamp: "May 8", price: 93.5, volume: 10 },
+                      { timestamp: "May 9", price: 95.2, volume: 14 },
+                      { timestamp: "May 10", price: 94.8, volume: 11 },
+                      { timestamp: "May 11", price: 93.9, volume: 9 },
+                      { timestamp: "May 12", price: 95.7, volume: 15 },
+                      { timestamp: "May 13", price: 96.2, volume: 16 },
+                      { timestamp: "May 14", price: 97.1, volume: 18 },
+                    ]}
+                    title="Trade Success Rate"
+                    symbol="Success %"
+                    currentPrice={97.1}
+                    priceChange={1.6}
+                    timeframe="1d"
+                    chartType="line"
+                    showVolume={true}
+                    height={300}
+                    className="bg-surface-light border-gray-800"
+                    onTimeframeChange={(tf) => console.log("Timeframe changed to", tf)}
+                  />
                 </div>
                 
                 <Card className="bg-surface-light border-gray-800">
