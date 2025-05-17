@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { AlertTriangle, CheckCircle, Clock, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { useWebSocket } from "react-use-websocket";
 
 export type NetworkCongestion = "low" | "medium" | "high";
 
@@ -67,55 +68,30 @@ export function NetworkStatus({ className, onNetworkSelect }: NetworkStatusProps
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [selectedNetwork, setSelectedNetwork] = useState<string | null>(null);
 
-  // Simulate network updates every 15 seconds
+  // WebSocket connection for real-time updates
+  const { sendMessage, lastMessage } = useWebSocket('wss://your-websocket-endpoint/network-status', {
+    onOpen: () => console.log('WebSocket Connected'),
+    onError: (error) => console.error('WebSocket Error:', error),
+    shouldReconnect: (closeEvent) => true,
+  });
+
+  // Handle incoming WebSocket messages
   useEffect(() => {
-    const interval = setInterval(() => {
-      updateNetworkStatus();
-    }, 15000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const updateNetworkStatus = () => {
-    // This would be an actual API call in a real application
-    // Here we're just simulating random changes to the network data
-    setNetworks(prev => 
-      prev.map(network => {
-        const random = Math.random();
-        let congestion: NetworkCongestion = network.congestion;
-        
-        if (random < 0.3) {
-          congestion = "low";
-        } else if (random < 0.7) {
-          congestion = "medium";
-        } else {
-          congestion = "high";
-        }
-        
-        const gasPrice = congestion === "low" 
-          ? network.gasPrice * 0.8 + Math.random() * 5
-          : congestion === "medium"
-            ? network.gasPrice * 1.1 + Math.random() * 10
-            : network.gasPrice * 1.5 + Math.random() * 20;
-            
-        return {
-          ...network,
-          congestion,
-          gasPrice: Number(gasPrice.toFixed(2)),
-          isActive: Math.random() > 0.05 // 5% chance of network being down
-        };
-      })
-    );
-  };
+    if (lastMessage !== null) {
+      const networkData = JSON.parse(lastMessage.data);
+      setNetworks(prevNetworks => 
+        prevNetworks.map(network => {
+          const updatedNetwork = networkData.find((n: Network) => n.id === network.id);
+          return updatedNetwork ? { ...network, ...updatedNetwork } : network;
+        })
+      );
+    }
+  }, [lastMessage]);
 
   const handleRefresh = () => {
     setIsRefreshing(true);
-    updateNetworkStatus();
-    
-    // Simulate loading
-    setTimeout(() => {
-      setIsRefreshing(false);
-    }, 1000);
+    sendMessage(JSON.stringify({ type: 'refresh' }));
+    setTimeout(() => setIsRefreshing(false), 1000);
   };
 
   const handleNetworkSelect = (networkId: string) => {
@@ -167,7 +143,7 @@ export function NetworkStatus({ className, onNetworkSelect }: NetworkStatusProps
                 onClick={handleRefresh}
                 disabled={isRefreshing}
               >
-                <RefreshCw className={cn("h-4 w-4", isRefreshing && "spin")} />
+                <RefreshCw className={cn("h-4 w-4", isRefreshing && "animate-spin")} />
               </Button>
             </TooltipTrigger>
             <TooltipContent>
