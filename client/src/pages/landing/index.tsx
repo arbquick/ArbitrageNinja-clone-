@@ -3,6 +3,8 @@ import { Navbar } from "./navbar";
 import { Hero } from "./hero";
 import { Features } from "./features";
 import { Pricing } from "./pricing";
+import { About } from "./about";
+import { Contact } from "./contact";
 import { Footer } from "./footer";
 import { Helmet } from "react-helmet-async";
 
@@ -23,10 +25,12 @@ export default function LandingPage() {
       <Navbar />
       <Hero />
       <Features />
+      <About />
       <Pricing />
+      <Contact />
       
       {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-b from-surface to-surface-dark">
+      <section className="py-20 bg-gradient-to-b from-black to-[#0D1421]">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Earning?</h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-10">
@@ -34,7 +38,7 @@ export default function LandingPage() {
           </p>
           <a 
             href="/dashboard" 
-            className="inline-block px-8 py-4 rounded-lg bg-gradient-to-r from-secondary to-accent-purple text-white text-lg font-semibold hover:shadow-glow transition-all transform hover:-translate-y-1"
+            className="inline-block px-8 py-4 rounded-lg bg-gradient-to-r from-[#2FB6FC] to-[#2a63ff] text-white text-lg font-semibold hover:shadow-[0_0_30px_rgba(47,182,252,0.3)] transition-all transform hover:-translate-y-1"
           >
             Create Your Account
           </a>

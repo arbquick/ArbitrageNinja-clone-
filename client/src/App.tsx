@@ -15,6 +15,7 @@ import Settings from "@/pages/settings";
 import Subscription from "@/pages/subscription";
 import { SubscriptionProvider } from "@/context/subscription-context";
 import { AuthProvider } from "@/context/auth-context";
+import { LanguageProvider } from "@/context/language-context";
 import { Helmet } from "react-helmet-async";
 
 function Router() {
@@ -39,17 +40,19 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <SubscriptionProvider>
-          <TooltipProvider>
-            <Helmet>
-              <link rel="preconnect" href="https://fonts.googleapis.com" />
-              <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-              <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-              <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-              <title>CryptoArb | Advanced Crypto Arbitrage Platform</title>
-            </Helmet>
-            <Toaster />
-            <Router />
-          </TooltipProvider>
+          <LanguageProvider>
+            <TooltipProvider>
+              <Helmet>
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+                <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+                <title>CryptoArb | Advanced Crypto Arbitrage Platform</title>
+              </Helmet>
+              <Toaster />
+              <Router />
+            </TooltipProvider>
+          </LanguageProvider>
         </SubscriptionProvider>
       </AuthProvider>
     </QueryClientProvider>

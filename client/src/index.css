@@ -44,6 +44,12 @@
   --sidebar-accent-foreground: 0 0% 98%;
   --sidebar-border: 240 3.7% 15.9%;
   --sidebar-ring: 240 4.9% 83.9%;
+  
+  /* CryptoLink-style colors */
+  --deep-blue: 220 80% 8%;
+  --medium-blue: 220 70% 15%;
+  --bright-blue: 220 90% 50%;
+  --glow-blue: 220 100% 65%;
 }
 
 @layer base {
@@ -157,4 +163,215 @@
 
 .animate-pulse-slow {
   animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Added custom utilities for the enhanced landing page */
+.shadow-glow {
+  box-shadow: 0 0 15px 2px rgba(59, 130, 246, 0.3);
+}
+
+.shadow-glow-purple {
+  box-shadow: 0 0 15px 2px rgba(139, 92, 246, 0.3);
+}
+
+.shadow-glow-teal {
+  box-shadow: 0 0 15px 2px rgba(45, 212, 191, 0.3);
+}
+
+/* Z-index utilities */
+.z-0 { z-index: 0; }
+.z-1 { z-index: 1; }
+.z-2 { z-index: 2; }
+.z-3 { z-index: 3; }
+.z-10 { z-index: 10; }
+
+/* Float animation for crypto symbols */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Enhanced hover effects */
+.hover\:shadow-glow:hover {
+  box-shadow: 0 0 25px 5px rgba(59, 130, 246, 0.4);
+}
+
+.hover\:shadow-glow-purple:hover {
+  box-shadow: 0 0 25px 5px rgba(139, 92, 246, 0.4);
+}
+
+.hover\:shadow-glow-teal:hover {
+  box-shadow: 0 0 25px 5px rgba(45, 212, 191, 0.4);
+}
+
+/* CryptoLink-inspired styles */
+.bg-deep-blue {
+  background-color: hsl(220, 80%, 8%);
+}
+
+.bg-medium-blue {
+  background-color: hsl(220, 70%, 15%);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.crypto-cube {
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+/* Isometric cube styles */
+.cube-face {
+  backface-visibility: hidden;
+  position: absolute;
+}
+
+.cube-front {
+  transform: translateZ(40px);
+}
+
+.cube-back {
+  transform: rotateY(180deg) translateZ(40px);
+}
+
+.cube-right {
+  transform: rotateY(90deg) translateZ(40px);
+}
+
+.cube-left {
+  transform: rotateY(-90deg) translateZ(40px);
+}
+
+.cube-top {
+  transform: rotateX(90deg) translateZ(40px);
+}
+
+.cube-bottom {
+  transform: rotateX(-90deg) translateZ(40px);
+}
+
+/* Circuit board pattern */
+.bg-circuit-pattern {
+  background-image: 
+    radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.2) 2px, transparent 0),
+    linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px, 25px 25px, 25px 25px;
+}
+
+/* Enhanced 3D cube and crypto coin animations */
+.crypto-coin {
+  transform-style: preserve-3d;
+  animation: coin-float 4s ease-in-out infinite;
+}
+
+.crypto-coin.bitcoin {
+  animation-delay: 0s;
+}
+
+.crypto-coin.ethereum {
+  animation-delay: 1.5s;
+}
+
+.crypto-coin.tether {
+  animation-delay: 1s;
+}
+
+@keyframes coin-float {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes coin-pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* Holographic effect */
+.holographic {
+  position: relative;
+  overflow: hidden;
+}
+
+.holographic::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 45%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.1) 55%,
+    transparent 100%
+  );
+  transform: rotate(30deg);
+  animation: holographic-sweep 5s linear infinite;
+}
+
+@keyframes holographic-sweep {
+  0% { transform: rotate(0) translateX(-100%); }
+  100% { transform: rotate(0) translateX(100%); }
+}
+
+/* Particle animation */
+@keyframes float-particle {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 0.6; transform: translateY(-10px); }
+}
+
+.animate-particle {
+  animation: float-particle 10s ease-in-out infinite;
+}
+
+/* Digital line animation */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.3; }
+}
+
+.digital-line {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+/* Neural network connector animation */
+.neural-connector {
+  stroke-dasharray: 10;
+  stroke-dashoffset: 20;
+  animation: dash-animation 10s linear infinite;
+}
+
+@keyframes dash-animation {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* QuickArb logo pulse */
+.logo-pulse {
+  animation: logo-pulse-animation 3s ease-in-out infinite;
+}
+
+@keyframes logo-pulse-animation {
+  0%, 100% { filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.4)); }
+  50% { filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.6)); }
+}
+
+/* Make sure 3D works properly */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+html, body {
+  overflow-x: hidden;
 }
